@@ -1,0 +1,34 @@
+
+/*
+|
+| Pagination
+|---------------
+*/
+.pagination-container {
+    margin: 30px auto 0 auto;
+    li {
+        display: inline-block;
+         border-right: 1px solid rgba($green,0.5);
+        &:last-child{
+            border-right: 0px;
+        }
+        span, a{
+            line-height: 1.2em;
+        }
+        a {
+            transition: all 0.3s ease-out;
+            padding: 0 8px;
+            color: $green;
+            &:hover {
+                color: $orange;
+            }
+        }
+
+        .current {
+            padding: 0 8px;
+            font-weight: 500;
+            color: $green;
+        }
+    }
+
+}

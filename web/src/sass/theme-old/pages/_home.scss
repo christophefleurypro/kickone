@@ -1,0 +1,152 @@
+/*
+|--------------------
+|     PAGE HOME
+|--------------------
+*/
+#page-home {
+	position: fixed;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+    padding-top: 170px;
+	background: $very-dark-grey;
+}
+
+.home__background{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	.wave{
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		margin: 0px;
+		right: 0; 
+		bottom:0;
+		svg{
+		    height: 100%;
+    		width: 120%;
+		    position: absolute;
+		    left: 50%;
+		    right: 50%;
+		    bottom: 0;
+		    transform: translate(-50%, 10%);
+		    margin: auto;
+		}
+	}
+}
+.home__nav{
+	position: relative;
+	z-index: 10;
+
+
+
+	.home__nav__screens{
+		display: inline-flex;
+		.home__nav__screen{
+			.home__nav__screen__button{
+				position: relative;
+				padding: 8px 0;
+				color: $white;
+				font-weight: 400;
+				&:after{
+					content: '';
+					position: absolute;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					height: 1px; 
+					width: 100%;
+					background: $white;
+					opacity: 0.2;
+					transition: 0.2s ease-In-Out;
+				}
+				&:hover{
+					cursor: pointer;
+				}
+			}
+			&:not(:first-child){
+				margin-left: 60px;
+			}
+			&.is-current{
+				.home__nav__screen__button{
+					color: $orange;
+					&:after{
+						height: 3px; 
+						opacity: 0.8;
+						background: $orange;
+					}
+				}
+			}
+		}
+	}
+}
+.home__screen{
+	position: absolute;
+	padding-top: 260px;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    &.is-current{
+    	visibility: inherit;
+    }
+    [slide-item="title"]{
+    }
+    [slide-item="text"]{}
+    [slide-item="btn"]{}
+
+   
+    .container{
+    	position: relative;
+    	z-index: 20;
+    }
+     .text-scrolling-ctr{
+    	position: absolute;
+    	z-index: 1;
+    	height: 100vh;
+	    width: 100vw;
+	    bottom: 0;
+	    right: 0;
+    }
+    .text-scrolling{
+	    font-size: 100px;
+	    position: absolute;
+	    display: flex;
+	    left: 70%;
+	    bottom: -50px;
+	    transform-origin: left;
+	    height: 100px;
+	    white-space: nowrap;
+	    width: 100vh;
+	    transform: rotate(-90deg);
+	    color: $white;
+	    font-weight: 600;
+        -webkit-text-fill-color: transparent;
+	    -webkit-text-stroke-width: 1px;
+	    margin: 0;
+	    padding: 0;
+	    box-sizing: border-box;
+	    text-rendering: optimizeLegibility;
+	    -webkit-font-smoothing: antialiased;
+	    -moz-osx-font-smoothing: grayscale;
+	    -webkit-tap-highlight-color: transparent;
+
+    }
+    .list-btn{
+    	&:not(.nb-0),
+    	&:not(.nb-1),
+    	&:not(.nb-2){
+
+    	}
+    }
+}

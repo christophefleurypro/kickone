@@ -1,0 +1,66 @@
+/*
+-------------------------------- 
+COLORS
+--------------------------------
+*/
+$light-blue : #081746;
+$blue : #081746;
+$dark-blue : #020a21;
+$light-orange : #FBAA0B;
+$orange : #FBAA0B;
+$white : #fff;
+$black : #000;
+$green : #000;
+$very-light-grey: #efefef;
+$light-grey: #6B6F7B;
+$grey: #6B6F7B;
+$dark-grey: #6B6F7B;
+$very-dark-grey: #efefef;
+
+$colors : (
+  //Required colors
+  'black'  : $black,
+  'white'  : $white,
+  'light-orange' : $light-orange,
+  'orange' : $orange,
+  'light-blue' : $light-blue,
+  'blue' : $blue,
+  'dark-blue' : $dark-blue,
+  'green' : $green,
+  'very-light-grey': $very-light-grey,
+  'light-grey' : $light-grey,
+  'grey' : $grey,
+  'dark-grey' : $dark-grey,
+  'very-dark-grey': $very-dark-grey,
+);
+
+/*------- COLORS -------*/
+@include generate-class-from-map($colors, 'c', color, !important);
+@include generate-class-from-map($colors, 'bg', background-color);
+
+:root {
+    --primary: $white;
+    --secondary: $black;
+
+    --fixed-white: #fff;
+    --fixed-black: #000;
+
+    --primary_grey: #f7f7f4;
+    --half_grey: #5f5f5f;
+    --secondary_grey: #1f1f1f;
+
+    --brand_primary: $blue;
+    --brand_secondary: $orange;
+
+    --support: mistyrose;
+}
+
+[data-theme="dark"]{
+    --primary: #000;
+    --secondary: #fff;
+
+    --primary_grey: #1f1f1f;
+    --secondary_grey: #f7f7f4;
+
+    --support: #505064;
+}

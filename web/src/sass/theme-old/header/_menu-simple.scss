@@ -1,0 +1,74 @@
+/*
+|--------------------
+|      HEADER
+|--------------------
+*/
+#header.header-start,
+#header.header-end,
+#header.header-center{
+
+    .header-secondary{
+        .item-ul{
+            .item-link{
+
+            }
+        }
+    }
+
+    /*
+    |      MENU PRINCIPAL BOTTOM
+    |--------------------
+    */
+    .header-principal{
+
+        /*
+        |      MTYPE DE SOUS menu
+        |--------------------
+        */
+        .header-container{
+
+            /*
+            |     A gauche
+            |--------------------
+            */
+            &.jc-start{
+                .logo-ctr{}
+                .nav-ctr{
+                    padding-left: 30px;
+                }
+                .btn-mobil-ctr{}
+            }
+            /*
+            |     Centrer
+            |--------------------
+            */
+            &.jc-center{
+                .logo-ctr{}
+                .nav-ctr{
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    justify-content: center;
+                }
+                .other-ctr{
+                    min-width: 180px;
+                }
+                .btn-mobil-ctr{}
+            }
+             /*
+            |     A droite
+            |--------------------
+            */
+            &.jc-end{
+                .logo-ctr{}
+                .nav-ctr{
+                    justify-content: flex-end;
+                }
+                .other-ctr{
+                    padding-left: 15px;
+                }
+                .btn-mobil-ctr{}
+            }
+
+        }
+    }
+}

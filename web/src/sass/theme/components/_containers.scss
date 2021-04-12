@@ -1,0 +1,127 @@
+$breakpoint-xxl: 1610px;
+$container-xxl: 1580px;
+$container-xl: 1360px;
+$container-lg: 1220px;
+$container-md: 960px;
+$container-sm: 720px;
+$container-xs: 540px;
+
+@mixin customSpace($property, $minus: '') {
+    #{$property}: 15px;
+
+    // @if $minus=='minus' {
+    //     $value-xxl: calc(-1 * ((100vw - #{$container-xxl} + 30px) / 2));
+    //     $value-xl: -4vw;
+    // }
+
+    @include breakpoint(xs) {
+        #{$property}: calc((100vw - #{$container-xs} + 30px) / 2);
+    }
+
+    @include breakpoint(sm) {
+        #{$property}: calc((100vw - #{$container-sm} + 30px) / 2);
+    }
+
+    @include breakpoint(md) {
+        #{$property}: calc((100vw - #{$container-md} + 30px) / 2);
+    }
+
+    @include breakpoint(lg) {
+        #{$property}: calc((100vw - #{$container-lg} + 30px) / 2);
+    }
+
+    @include breakpoint(xl) {
+        #{$property}: calc((100vw - #{$container-xl} + 30px) / 2);
+    }
+
+    // @media(min-width: $breakpoint-xxl) {
+    //     #{$property}: calc((100vw - #{$container-xxl} + 30px) / 2);
+    // }
+}
+
+/*
+|
+| Mixin generate custom spaces flexible
+|----------------------------------------
+*/
+@mixin customSpaceFlexible($property, $minus: '') {
+    $value-xxl: calc((100vw - #{$container-xxl} + 30px) / 2);
+    $value-xl: 4vw;
+
+    @if $minus=='minus' {
+        $value-xxl: calc(-1 * ((100vw - #{$container-xxl} + 30px) / 2));
+        $value-xl: -4vw;
+    }
+
+    #{$property}: 15px;
+
+    @include breakpoint(xs) {
+        #{$property}: $value-xl;
+    }
+
+    @media(min-width: $breakpoint-xxl) {
+        #{$property}: $value-xxl;
+    }
+}
+
+@mixin customWidth() {
+    $value-xxl: calc(100vw - (100vw - #{$container-xxl} + 30px));
+    $value-xl: 92vw;
+
+    width: calc(100vw - 30px);
+
+    @include breakpoint(xs) {
+        width: $value-xl;
+    }
+
+    @media(min-width: $breakpoint-xxl) {
+        width: $value-xxl;
+    }
+}
+
+
+
+
+.container__sm {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include breakpoint(xs) {
+        max-width: $container-xs;
+    }
+
+    @include breakpoint(sm) {
+        max-width: $container-sm;
+    }
+
+    @include breakpoint(md) {
+        max-width: $container-md;
+    }
+
+    @include breakpoint(lg) {
+        max-width: $container-lg;
+    }
+
+    @include breakpoint(xl) {
+        max-width: $container-xl;
+    }
+}
+
+.container__flexible{
+    @extend .container__sm;
+
+    @include breakpoint(xl) {
+        max-width: none;
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
+
+    // @media(min-width: $breakpoint-xxl) {
+    //     padding-left: 15px;
+    //     padding-right: 15px;
+    //     max-width: $container-xxl;
+    // }
+}

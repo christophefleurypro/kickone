@@ -1,0 +1,42 @@
+//Base
+@import 'base/variables';
+@import 'base/fonts';
+@import 'base/default';
+@import 'base/cursor';
+@import 'base/image';
+@import 'base/content';
+
+//components
+@import 'components/animation';
+@import 'components/cookie';
+@import 'components/pagination';
+@import 'components/social';
+@import 'components/buttons';
+@import 'components/smooth-scrollbar';
+@import 'components/forms';
+@import 'components/loader';
+
+
+//header
+@import 'header/default';
+@import 'header/menu-simple';
+@import 'header/menu-burger';
+@import 'header/sub-menu-mega';
+@import 'header/sub-menu-simple';
+@import 'header/mobil-menu';
+
+//footer
+@import 'footer/simple';
+
+
+//sections
+@import 'layout/banner';
+@import 'layout/_bg-image';
+
+
+//Pages
+@import 'pages/home';
+@import 'pages/portfolio';
+@import 'pages/contact';
+@import 'pages/error-404';
+

@@ -1,0 +1,33 @@
+.ul-rs{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 0px;
+	.item-rs {
+		margin: 0px 6px;
+		list-style: none;
+		padding: 0px;
+		a{
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			padding: 7px;
+			background: $white;
+			height: 32px;
+			width: 32px;
+			margin: 0px;
+			svg{
+				height: 16px;
+				width: 16px;
+		    	path,rect, circle, polyline, polygon ,line {
+	                &[fill^="#"]{
+	                    fill : $black;
+	                }
+	                &[stroke^="#"]{
+	                    stroke : $black;
+	                }
+	            }
+			}
+		}
+	}
+}

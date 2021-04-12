@@ -1,0 +1,60 @@
+/*
+|      Sub Menu
+|--------------------
+*/
+$bg_sub_menu-color : $green;
+$item_sub-color : $white;
+$item_sub-hover-color : $orange;
+
+
+
+.header-principal{
+    &.sub-menu-mega{
+
+        .menu-panel{
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            position: absolute;
+            background-color: $bg_sub_menu-color;
+
+            .menu-panel-container{
+                @extend .container;
+                padding-top: 40px;
+                padding-bottom: 40px;
+                .menu-panel-row{
+                    @extend .row;
+                }
+
+                .menu-panel-item{
+                    @extend .col-md-4;
+
+                    .item-sub-link{
+                        display: inline-block;
+                        width: auto;
+                        padding: 5px 15px;
+                        color: $item_sub-color ;
+                        &:hover{
+                            color: $item_sub-hover-color ;
+                        }
+                        &.item-sub-link-first{
+                            font-weight: 500;
+                        }
+                    }
+
+
+                    &.img-submenu-ctr{
+                    }
+                    &.nav-submenu-ctr{
+                    }
+
+
+                }
+
+            }
+        }
+    }
+
+
+}

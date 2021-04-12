@@ -1,0 +1,50 @@
+/*
+|--------------------
+|      HEADER
+|--------------------
+*/
+#header.header-burger{
+    position: fixed;
+
+    .header-secondary{
+        .item-ul{
+            .item-link{
+
+            }
+        }
+    }
+
+    /*
+    |      MENU PRINCIPAL BOTTOM
+    |--------------------
+    */
+    .header-principal{
+
+        /*
+        |      MTYPE DE SOUS menu
+        |--------------------
+        */
+        .header-container{
+            padding-top: 55px;
+            /*
+            |     A gauche
+            |--------------------
+            */
+            &.jc-burger{
+                justify-content: space-between;
+                
+                .logo-ctr{}
+                .nav-ctr{
+                    padding-left: 30px;
+                }
+                .btn-mobil-ctr{}
+            }
+
+        }
+    }
+
+    .btn-menu {
+        
+    }
+
+}

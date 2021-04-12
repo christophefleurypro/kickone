@@ -1,0 +1,215 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+	
+	<div id="page-about">
+
+
+        {#
+        |
+        | Section Banner
+        |-----------------
+        #}
+        {{ banner.default({
+            'title': post.get_field('s-banner')['--title'],
+            'text': post.get_field('s-banner')['--text'],
+            'image': post.get_field('s-banner')['--image']
+        }) }}
+
+
+
+        {#
+        |
+        | FLexible Content
+        |-----------------
+        #}
+        {% for item in post.get_field('s0-content') %}
+
+            {% set case         = item.acf_fc_layout %}
+            {% set IndexG       = loop.index %}
+
+
+            {#
+            |
+            | Section-icone
+            |--------------------------------------------------------------------
+            #}
+            {% if case == "group-icone" %}
+
+               {#
+                |
+                | section-icone
+                |------------------
+                #}
+                <section class="section section-icone bg-light-grey" >
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-11">
+                                <div class="item-title mb-0 center">
+                                    <h2 class="title title-xl">{{ item['--title'] }}</h2>
+                                    <h3 class="title title-md mt-xs mb-sm">{{ item['--subtitle'] }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row list-chiffre">
+                            {% for bloc in item['--list'] %}
+                                <div class="col-md-4 item-chiffre-ctr">
+                                    <div class="item-chiffre">
+                                        <div class="chiffre-image">
+                                            <img src="{{TimberImage(bloc.icone).src}}" alt="{{TimberImage(bloc.icone).alt}}" class="img-fluid"/>
+                                        </div>
+                                        <div class="chiffre-title mb-sm fw-500">{{bloc['--title']}}</div>
+                                        <div class="chiffre-content">{{bloc['--text']}}</div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+
+            {% elseif case == "goup-colone" %}
+
+
+                {#
+                |
+                | Section Colonne
+                |------------------
+                #}
+                <section class="section section-colonne">
+                    <div class="container">
+                        <div class="row ai-center jc-between">
+                            <div class="col-md-5">
+                                <div class="hero-image hero-image--metier">
+                                    <div class="img-cover">
+                                        <figure>
+                                            <img src="{{TimberImage(item['--image']).src}}" alt="{{TimberImage(item['--image']).alt}}" class="img-fluid"/>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 card-custom-ctr">
+                                <div class="item-title mb-lg center">
+                                    <h2 class="title title-xl">{{ item['--title'] }}</h2>
+                                    <h3 class="title title-md mt-xs mb-sm">{{ item['--subtitle'] }}</h3>
+                                </div>
+                                <div class="cms cms-list">
+                                    {{item['--text']}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+            {% elseif case == "metiers" %}
+
+
+                    {#
+                    |
+                    | Section METIERS
+                    |------------------
+                    #}
+                    <section class="section section-metiers pb-0">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-11">
+                                    <div class="item-title center">
+                                        <h2 class="title title-xl c-green font-extra">{{ post.get_field('s3-titre') }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row list-metier">
+                                {% for item in post.get_field('s3-bloc') %}
+                                    <div class="col-md-4 card-metier-ctr">
+                                        <a href="{{item.lien}}" class="card-metier">
+                                            <div class="hero-image hero-image--metier">
+                                                <div class="img-cover bg-overlay bg-overlay--gradient">
+                                                    <figure>
+                                                        <img src="{{TimberImage(item.image).src}}" alt="{{TimberImage(item.image).alt}}" class="img-fluid"/>
+                                                    </figure>
+                                                </div>
+                                                <div class="card-metier-detail">
+                                                    <div class="detail-title">
+                                                        <span>{{item.titre}}</span><span class="ico-target">{{ function([services, 'svg'], img ~ '/icon/bottom.svg') }}</span>
+                                                    </div>
+                                                    <div class="detail-content">
+                                                        <div class="cms">
+                                                            {{item.texte}}
+                                                        </div>
+
+                                                        <div class="btn-icon btn-icon--white btn-icon--right">
+                                                            <span class="text">
+                                                                {{translations.more_information}}
+                                                            </span>
+                                                            <span class="icon">{{ function([services, 'svg'], img ~ '/icon/ico-btn-right.svg') }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+
+
+       
+            {% endif %}
+
+
+        {% endfor %}
+
+     
+
+
+
+
+
+        {#
+        |
+        | page-next
+        |------------------
+        #}
+        {% set group = post.get_field('groupe-next') %}
+
+        <section class="section section-contact without-icon bg-green">
+            <div class="container">
+                <div class="row jc-center">
+                    <div class="col-lg-7">
+                        <div class="item-title ta-c">
+                            <h2 class="title title-xl c-white font-extra">{{ group['--title'] }}</h2>
+                        </div>
+                        <div class="cms c-white ta-c mt-lg mb-lg">
+                            <p>{{ group['--text'] }}</p>
+                        </div>
+                        <div class="list-btn center">
+                            {% set link = group['--btn'] %}
+                            {{button.default({ 
+                                'type'          :   link['lien-type'],
+                                'text'          :   link['texte'],
+                                'lien-interne'  :   link['lien-interne'],
+                                'lien-externe'  :   link['lien-externe'],
+                                'mail'          :   link['mail'],
+                                'phone'         :   link['phone'],
+                                'id'            :   link['id'],
+                                'icon'          :   false,
+                                'color'         :   'white' ,
+                                'class'         :   'btn-icon btn-icon-right',
+                                'data'          :   false
+                                }, img)
+                            }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
+{% endblock %}

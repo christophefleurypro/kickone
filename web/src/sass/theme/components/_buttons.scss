@@ -1,0 +1,187 @@
+/*
+-------------------------------- 
+BUTTON COMPONENT
+--------------------------------
+*/
+.cta-bottom {
+	margin-top: auto;
+}
+
+a {
+	&.link {
+		position: relative;
+		color: inherit;
+		cursor: pointer;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-size: var(--text-sm);
+
+		/*
+		-------------------------------- 
+		BUTTON PRIMARY
+		--------------------------------
+		*/
+		&.primary {
+			padding: 24px 40px;
+
+			span {
+				position: relative;
+				z-index: 10;
+			}
+
+			&:after {
+				content: "";
+				position: absolute;
+				height: 100%;
+				width: 100%;
+				bottom: 0;
+				left: 0;
+				z-index: 1;
+				background: $orange;
+				transform: scaleX(0);
+				transform-origin: right;
+				transition: transform 1.2s $easeSmooth;
+			}
+
+			&.is-blue {
+				background: $blue;
+				color: $white;
+			}
+
+			&.is-small {
+				padding: 12px 24px;
+				font-size: 12px;
+			}
+
+			&:hover {
+				&:after {
+					transform: scaleX(1);
+					transform-origin: left;
+				}
+			}
+		}
+
+		/*
+		-------------------------------- 
+		BUTTON SECONDARY
+		--------------------------------
+		*/
+		&.secondary {
+			display: flex;
+			align-items: center;
+
+			span {
+				position: relative;
+				z-index: 10;
+				margin-left: 80px;
+			}
+
+			&:before {
+				content: "";
+				position: absolute;
+				height: 10px;
+				width: 10px;
+				left: 0;
+				z-index: 1;
+				background: $white;
+				border: 16px solid $orange;
+				border-radius: 50%;
+				transform: scale(1);
+				transition: transform 1.2s $easeSmooth;
+			}
+
+			&:after {
+				content: "";
+				position: absolute;
+				height: 1px;
+				width: 28px;
+				left: 0;
+				margin-left: 32px;
+				z-index: 2;
+				transform: scaleX(1);
+				transform-origin: left;
+				transition: transform .64s $easeSmooth;
+			}
+
+			&.is-blue {
+				color: $blue;
+
+				&:after {
+					background: $blue;
+				}
+			}
+
+			&.is-white {
+				color: $white;
+
+				&:after {
+					background: $white;
+				}
+			}
+
+			&.is-orange {
+				color: $orange;
+
+				&:after {
+					background: $white;
+				}
+			}
+
+			&:hover {
+				&:before {
+					transform: scale(1.4);
+				}
+
+				&:after {
+					transform: scaleX(0);
+					transform-origin: right;
+				}
+			}
+		}
+	}
+}
+
+.js-element {
+	display: inline-block;
+}
+
+.underline,
+#breadcrumbs a {
+	position: relative;
+	color: inherit;
+	cursor: pointer;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: var(--text-sm);
+}
+
+.is-desktop {
+	.underline,
+	#breadcrumbs a {
+		&:after {
+			content: "";
+			position: absolute;
+			height: 1px;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+			background: var(--secondary_grey);
+			transform: scaleX(0);
+			transform-origin: right;
+			transition: transform 1.2s $easeSmooth;
+		}
+
+		&:hover {
+			&:after {
+				transform: scaleX(1);
+				transform-origin: left;
+			}
+		}
+
+		&.is-white {
+			&:after {
+				background: var(--fixed-white);
+			}
+		}
+	}
+}

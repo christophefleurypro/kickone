@@ -1,0 +1,42 @@
+/*
+-------------------------------- 
+THEME GLOBAL
+--------------------------------
+*/
+@import "base/variables";
+@import "base/fonts";
+@import "base/default";
+
+// Components
+@import "components/partial";
+@import "components/buttons";
+@import "components/preloader";
+@import "components/form";
+@import "components/cookies";
+@import "components/hero";
+@import "components/titles";
+@import "components/videos";
+@import "components/spaces";
+@import "components/containers";
+@import "components/canvas";
+@import "components/images";
+
+// Layout
+@import "layout/loader";
+@import "layout/header";
+@import "layout/header-mobil";
+@import "layout/footer";
+@import "layout/partial";
+@import "layout/banner";
+
+// Pages
+@import "pages/home";
+@import "pages/single";
+@import "pages/about";
+@import "pages/contact";
+@import "pages/edito";
+
+
+
+// Delete this
+@import "debug";

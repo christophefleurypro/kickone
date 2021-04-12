@@ -1,0 +1,145 @@
+/*
+|---------------------------------------------------------------
+| BUTTONS
+|---------------------------------------------------------------
+| Generate and set buttons
+|
+|
+*/
+
+/*
+|
+| Bg img default
+|----------------------
+|
+*/
+
+$bg-img-default : (
+    background-size: cover,
+    background-position: center center,
+    background-repeat: no-repeat
+);
+
+/*
+|-------------------
+| Bg img creation
+|-------------------
+| - Generated classes: .bg-img-{size}
+|
+*/
+$bg-imgs: (
+    'square' : 100%,
+    'landscape' : 70%,
+    'landscape-sm' : 52%,
+    'portrait' : 148%
+);
+
+
+.bg-img{
+    @include generate-properties-from-map($bg-img-default);
+
+    &:after {
+        content: '';
+        display: block;
+    }
+}
+
+@each $key, $value in $bg-imgs{
+    .bg-img-#{$key}{
+        @extend .bg-img;
+
+        &:after{
+            padding-bottom: $value;
+        }
+    }
+}
+
+
+// Images Container
+.bg-container {
+    @include size(100%, 100%);
+    @include absolute();
+    overflow: hidden;
+    z-index: -1;
+    .img-hero {
+        height: 100%;
+        width: 100%;
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.img-landscape,
+.img-portrait {
+    display: block;
+    height: 0;
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        outline: 1px solid transparent;
+        display: block;
+        top: 0;
+        left: 0;
+    }
+}
+
+// Images Portrait
+.img-landscape {
+    padding-bottom: 56.25%;
+}
+
+// Images landscape
+.img-portrait {
+    padding-bottom: 120%;
+}
+
+// Video container
+.video-container {
+    padding-bottom: 56.25%;
+    height: 0;
+    background: var(--secondary);
+
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+/*
+-------------------------------- 
+LAZYLOAD COMPONENT
+--------------------------------
+*/
+.lazy-ctr {
+    position: relative;
+    overflow: hidden;
+
+    .img-placeholder {
+        @include absolute();
+        @include size(100%, 100%);
+        background: $grey;
+        transition: opacity .5s ease;
+        transition-delay: .3s;
+        pointer-events: none;
+        user-select: none;
+        z-index: 2;
+    }
+
+    .img-lazy{
+        z-index: initial;
+    }
+
+    &.is-load {
+        .img-placeholder {
+            opacity: 0;
+        }
+    }
+}

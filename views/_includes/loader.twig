@@ -1,0 +1,13 @@
+<div id="preloader" class="page-loader">
+    <script>
+        if(sessionStorage.getItem('loaded_once') === null){
+            document.getElementById('page-loader').classList.add('active');
+        }
+    </script>
+    <div class="item-content">
+        <div class="mb-lg">{{ function([services, 'svg'], img ~ '/logo.svg') }}</div>  
+        <div class="item-loadbar">
+            <div class="item-loadbar-inner"></div>
+        </div>
+    </div>
+</div>

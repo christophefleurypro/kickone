@@ -1,0 +1,103 @@
+#-------------------------------------------------------
+#                    CPT DECLARATION
+#-------------------------------------------------------
+#
+# To add a CPT, copy and paste the CPT config below, 
+# and replace with the right datas
+#
+#
+
+#--------------------- projet ----------------------
+projet:
+  registration:
+    labels:
+      name: Projet
+      singular_name: Projet
+      add_new: Ajouter un projet
+      add_new_item: Ajouter un projet
+      edit_item: Modifier un projet
+      new_item: Nouveau
+      all_items: Toute l'équipe
+      view_item: Voir l'élément
+      search_item: Rechercher un projet
+      not_found: Aucun projet
+      not_fonud_in_trash: Aucun projet trouvé dans la corbeille
+      menu_name: Projets
+    public: true
+    publicly_queryable: true
+    show_ui: true
+    show_in_menu: true
+    query_var: projet
+    rewrite:
+      slug: projet
+    capability_type: post
+    has_archive: true
+    hierarchical: false
+    menu_position: 5
+    menu_icon: dashicons-admin-site
+    exclude_from_search: false
+    supports: 
+      - title
+#--------------------- equipe ----------------------
+equipe:
+  registration:
+    labels:
+      name: Equipe
+      singular_name: Equipe
+      add_new: Ajouter un membre
+      add_new_item: Ajouter un membre
+      edit_item: Modifier un membre
+      new_item: Nouveau
+      all_items: Toute l'équipe
+      view_item: Voir l'élément
+      search_item: Rechercher un membre
+      not_found: Aucun membre
+      not_fonud_in_trash: Aucun membre trouvé dans la corbeille
+      menu_name: Equipes
+    public: false
+    publicly_queryable: true
+    show_ui: true
+    show_in_menu: true
+    query_var: equipe
+    rewrite:
+      slug: un membre
+    capability_type: post
+    has_archive: true
+    hierarchical: false
+    menu_position: 5
+    menu_icon: dashicons-admin-site
+    exclude_from_search: false
+    supports: 
+      - title
+
+#--------------------- Projects ----------------------
+faq:
+  registration:
+    labels:
+      name: FAQ
+      singular_name: FAQ
+      add_new: Ajouter une FAQ
+      add_new_item: Ajouter une FAQ
+      edit_item: Modifier une FAQ
+      new_item: Nouveau
+      all_items: Toutes les FAQ
+      view_item: Voir FAQ
+      search_item: Rechercher une FAQ
+      not_found: Aucune FAQ
+      not_fonud_in_trash: Aucune FAQ trouvé dans la corbeille
+      menu_name: FAQ
+    public: false
+    publicly_queryable: true
+    show_ui: true
+    show_in_menu: true
+    query_var: faq
+    rewrite:
+      slug: un membre
+    capability_type: post
+    has_archive: true
+    hierarchical: false
+    menu_position: 5
+    menu_icon: dashicons-admin-site
+    exclude_from_search: false
+    supports: 
+      - title

@@ -1,0 +1,63 @@
+/*
+-------------------------------- 
+HOME PAGE
+--------------------------------
+*/
+.home-page{
+
+	
+	
+	
+	.item__image{
+	    position: relative;
+	    margin-bottom: 0.6em;
+	}
+	.item__meta{
+	    position: absolute;
+	    left: -0.4em;
+	    bottom: 0.4em;
+	    transform-origin: 0 100%;
+	    transform: rotate(-90deg);
+	    text-transform: uppercase;
+	    font-size: 80%;
+	}
+	.item__title{
+	    font-size: 40px;
+	    line-height: 1.2;
+	    margin-bottom: 0.4em;
+	}
+
+	.item__p{
+	    line-height: 1.4;
+	    font-size: 1em;
+	}
+
+	.item__projet{
+		padding: 0 40px;
+	    align-self: center;
+		margin-bottom: var(--space-lg);
+		/*&:nth-child(odd){
+		   align-self: start;
+		}
+		&:nth-child(even){
+		    align-self: center;
+		}*/
+
+		&.--all__projet{
+			align-self: center;
+			justify-content: center;
+			margin-bottom: 0px;
+			text-align: right;
+		}
+
+		img{
+		    width: 100%;
+		    display: block;
+		    opacity: 0.5;
+		}
+
+		&:nth-child(2n){
+			
+		}
+	}
+}

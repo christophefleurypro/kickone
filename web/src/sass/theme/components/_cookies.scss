@@ -1,0 +1,47 @@
+/*
+-------------------------------- 
+COOKIES COMPONENT
+--------------------------------
+*/
+#cookie-section {
+    display: none;
+    position: fixed;
+    width: calc(100% - 2 * var(--component-padding));
+    margin-bottom: var(--space-sm);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: var(--max-width-xxxl);
+    background: var(--primary);
+    padding: var(--space-sm);
+    z-index: $cookie_level;
+    
+    .cookie-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .cookie-content{
+        padding-right: var(--space-lg);
+    }
+
+    .cookie-consent{
+        display: flex;
+
+        a{
+
+            &:first-child{
+                margin-right: var(--space-sm);
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+
+        .cookie-container{
+            flex-direction: initial;
+        }
+    }
+}

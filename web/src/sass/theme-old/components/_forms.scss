@@ -1,0 +1,250 @@
+/*
+|-----------------------
+| 	  Gravity Form
+|-----------------------
+|
+*/
+
+/*
+|
+| Reset form elements
+|-------------------------
+*/
+input, textarea, select{
+    -webkit-appearance: none;
+    border-radius: 0;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+select{
+    background-image: url('../img/icon/bottom-reverse.svg');
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position: calc(100% - 10px) center;
+    border: 0px;
+    min-width: 150px;
+    background-color: transparent;
+    padding: 5px;
+    color: $green;
+}
+
+/*
+|
+| Gravity form bootstrap
+|-------------------------
+*/
+
+
+.gform_wrapper{
+    .gform_heading{
+        .gform_title{
+            font-size: 16px;
+            @extend .c-blue;
+            @extend .fw-500;
+        }
+    }
+    .gform_fields{
+        @extend .row;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        margin-left: 0px;
+        margin-right: 0px;
+        input, textarea{
+            width: 100%;
+            background-color: $white;
+            border: 1px solid $white;
+            padding: 10px 15px;
+        }
+        .gfield_label{
+            position: absolute;
+            top: 18px;
+            left: 15px;
+            margin-bottom: 0px;
+            color: $grey;
+            font-weight: 400;
+            line-height: 1em;
+            transition: 0.2s linear;
+            .gfield_required{
+                color: $grey;
+                padding-left: 2px;
+            }
+            &.active{
+                top: -17px;
+                font-size: 0.8em;
+            }
+        }
+        .gfield{
+            width: 100%;
+            position: relative;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            padding-right: 0;
+
+            &.fields-checkbox{
+                .gfield_label{
+                    display: none !important
+                }
+
+                .ginput_container{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    input{
+                        height: 22px;
+                        width: 22px;
+                        padding: 0px;
+                        border: 1px solid $green;
+                        &:checked{
+                            background-image: url('../img/icon/cross-black.svg');
+                            background-size: 10px;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+                    }
+                    .gfield_required{
+                        display: none;
+                    }
+                    .gfield_consent_label{
+                        flex: 1;
+                        margin-left: 10px;
+                        margin-bottom: 0px;
+                        color: $green;
+                    }
+                }
+
+            }
+        }
+    }
+    .instruction,
+    .gfield_description{
+        color: $green;
+        font-size: 14px;
+
+    }
+
+    .gfield_description{
+        &.validation_message{
+            color: #BB0B0B!important;
+        }
+    }   
+    .gform_footer{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+      input[type="submit"]{
+        position: relative;
+        background-color: $orange;
+        color: $white;
+        padding: 15px 30px;
+        transition: all 0.3s ease-out;
+        text-transform: uppercase;
+        cursor: pointer;
+        border: 2px solid $light-grey;
+        border-radius: 2px;
+
+        &:hover{
+            color: $white;
+           // background: $dark-orange;
+        }
+
+    }
+}
+
+/*
+|
+| Materialize form 
+|-------------------
+*/
+.materialize-form{
+    .materialize-form-group{ 
+        position: relative;
+        margin-bottom: 25px;
+
+        label{
+            position: absolute;
+
+            top: 0;
+            left: 15px;
+
+            font-weight: 400;
+            font-size: 18px;
+        }
+        input{
+            margin-bottom: 35px;
+
+            padding: 7px 0;
+
+            border: 0;
+            border-bottom: 2px solid $light-grey;
+        }
+
+        &.gfield_error{
+            label{
+                top: -20px;
+            }
+        }
+        
+    }
+}
+
+/*
+|
+| Contact form 
+|---------------
+*/
+.contact-form{
+    label{
+        color: $very-dark-grey;
+    }
+
+    textarea{
+        border: 2px $light-grey solid;
+        height: 200px;
+        padding: 15px;
+        color: $black;
+        font-size: 18px;
+        border-radius: 2px;
+
+        &::placeholder{
+            color: $black;
+        }
+    }
+
+    .gform_body{
+        margin-bottom: 20px;
+    }
+
+    .gform_footer {
+        text-align: right;
+    }
+
+  
+
+    .gform_confirmation_message{
+        color: $very-dark-grey;
+    }
+
+    .validation_message{
+        margin-top: 5px;
+        color: #BB0B0B;
+        font-size: 14px;
+    }
+}
+
+
+.validation_error{
+    margin-bottom: 10px;
+    color: #BB0B0B!important;
+}
+
+#gform_ajax_spinner_1 {
+    //display: none;
+    margin-left: 10px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}

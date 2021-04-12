@@ -1,0 +1,165 @@
+$xs : 5px;
+$sm : 15px;
+$md : 30px;
+$lg : 50px;
+$xl : 100px;
+$xxl : 140px;
+
+/*
+|
+| Margins & Paddings Maps
+|--------------------------
+|
+*/
+$spaces: (
+    '0' : 0,
+    'xs': $xs,
+    'sm': $sm,
+    'md': $md,
+    'lg': $lg,
+    'xl': $xl,
+    'xxl': $xxl
+);
+
+$space-properties: (
+    'mt': 'margin-top',
+    'mb': 'margin-bottom',
+    'my': 'margin-top''margin-bottom',
+    'mx': 'margin-left''margin-right',
+    'pt': 'padding-top',
+    'pb': 'padding-bottom',
+    'py': 'padding-top''padding-bottom',
+    'px': 'padding-left''padding-right'
+);
+
+$screen-sizes-up: (
+    'xs-up': 'xs',
+    'sm-up': 'sm',
+    'md-up': 'md',
+    'lg-up': 'lg',
+    'xl-up': 'xl'
+);
+
+
+/*
+|
+| Margins & Paddings
+|-----------------------
+|
+*/
+@mixin generate-spaces($spaces, $space-properties){
+  @each $prefix-space, $space in $spaces {
+    @each $prefix-property, $property in $space-properties{
+      .#{$prefix-property}-#{$prefix-space}{
+        @each $property-value in $property{
+          #{$property-value}: $space !important;
+        }
+      }
+    }
+  }
+}
+
+
+/*
+|
+| Responsive Margins & Paddings
+|--------------------------------
+|
+*/
+@mixin create-space-class($prefix-screen-size, $prefix-property, $prefix-space, $property, $space){
+  .#{$prefix-screen-size}-#{$prefix-property}-#{$prefix-space}{
+    @each $property-value in $property{
+      #{$property-value}: $space !important;
+    }
+  }
+}
+@mixin generate-screen-spaces($screen-type, $screen-sizes, $spaces, $space-properties){
+  @each $prefix-screen-size, $screen-size in $screen-sizes {
+    @each $prefix-space, $space in $spaces {
+      @each $prefix-property, $property in $space-properties{
+        @if $screen-type == up {
+          @include breakpoint(#{$screen-size}) {
+            @include create-space-class($prefix-screen-size, $prefix-property, $prefix-space, $property, $space);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@include generate-spaces($spaces, $space-properties);
+@include generate-screen-spaces('up', $screen-sizes-up, $spaces, $space-properties);
+
+
+/*
+|
+| Some margins
+|---------------
+*/
+$xs-alt: 10px;
+$sm-alt: 20px;
+$md-alt: 40px;
+$lg-alt: 70px;
+$xl-alt: 100px;
+
+
+.mb-xs-alt {
+    margin-bottom: $xs-alt;
+}
+
+.mb-sm-alt {
+    margin-bottom: $sm-alt;
+}
+
+.mb-md-alt {
+    margin-bottom: $md-alt;
+}
+
+.mb-lg-alt {
+    margin-bottom: $lg-alt;
+}
+
+.mb-xl-alt {
+    margin-bottom: $xl-alt;
+}
+
+.mt-lg-alt {
+    margin-top: $lg-alt;
+}
+
+.pb-md-alt{
+    padding-bottom: $md-alt;
+}
+
+body {
+    @include breakpoint(lg) {
+        .lg-up-mt-lg-alt {
+            margin-top: $lg-alt!important;
+        } 
+    }
+}
+
+.pl-indent{
+    padding-left: 0;
+
+    &.--max{
+        padding-left: 0;
+    }
+
+    @include breakpoint(sm){
+        padding-left: 30px;
+
+        &.--max {
+            padding-left: 65px;
+        }
+    }
+
+    @include breakpoint(md){
+        padding-left: 50px;
+
+        &.--max {
+            padding-left: 90px;
+        }
+    }
+}

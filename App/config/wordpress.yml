@@ -1,0 +1,50 @@
+#------------------------------------------------------
+#            Wordpress Theme Configuration
+#------------------------------------------------------
+#
+# This file contains all the wordpress theme setup
+#
+#
+
+#------------------- Admin bar ---------------------
+show_admin_bar: false
+
+
+#--------------- Clear head (Yoast) ----------------
+clear_head_for_yoast: true
+
+
+#------------------- Query Vars --------------------
+query_vars:
+  - filter
+
+
+
+#----------------- Theme supports ------------------
+theme_supports:
+  - title-tag
+  - post-formats
+  - post-thumbnails
+  - menus
+  - { support: html5, arg: [comment-list, comment-form, search-form, gallery, caption] }
+
+
+#---------------------- Menu -----------------------
+menus:
+  headertop: Primary
+  headerbottom: Secondary
+  footer: Footer
+
+
+#----------------- Remove features -----------------
+remove_action:
+  wp_head: wp_generator
+
+
+#------------------- Image size --------------------
+images_sizes:
+  square_sm:
+    w: 300
+    h: 300
+    crop: ['center', 'center']
+    

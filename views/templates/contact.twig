@@ -1,0 +1,63 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div id="page-contact" >
+
+        {#
+        |
+        | Section Banner
+        |-----------------
+        #}
+        {{ banner.default({
+            'title': post.get_field('s-banner')['--title'],
+            'text': post.get_field('s-banner')['--text'],
+            'image': post.get_field('s-banner')['--image']
+        }) }}
+
+
+        {#
+        |
+        | Section Form
+        |--------------
+        #}
+        <section class="section section-form bg-light-grey">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-5 block-form">
+                        {% if post.get_field('sc-3-form') %}
+                            {% set shortcode = "[contact-form-7 id="~ post.get_field('sc-3-form') ~"]" %}
+                            {{shortcode|shortcodes}}
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-lg">
+                            <h2 class="title-lg mb-md c-green fw-200 f-extra">{{post.get_field('sc-1-title')}}</h2>  
+                            <div class="list-dep">
+                                {% for item in post.get_field('sc-1-list') %}
+                                    <div class="item-dep">
+                                        <h2 class="fs-md mb-xs c-orange tt-u fw-200 f-default">{{item['--name']}}</h2>  
+                                        <div class="cms fs-md c-green">
+                                            <p>
+                                                {{item['--adress']}}
+                                                <br/>
+                                                Téléphone : <a href="tel:{{item['--phone']}}">{{item['--phone']}}</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="mb-lg">
+                            <h2 class="title-lg mb-md c-green fw-200 f-extra">{{post.get_field('sc-2-title')}}</h2>  
+                            <div class="cms">
+                                <p class="c-green">{{post.get_field('sc-2-text')}}</p>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+{% endblock %}

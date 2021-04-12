@@ -1,0 +1,156 @@
+/*
+-------------------------------- 
+DEFAULT COMPONENT
+--------------------------------
+*/
+section {
+    position: relative;
+}
+
+.article-card {
+    border-bottom: 1px solid $grey;
+}
+
+// Pagination
+.pagination-container {
+    li {
+        .current {
+            pointer-events: none;
+            opacity: 0.64;
+        }
+    }
+}
+
+// Ajax load more
+.loading-container {
+    display: none;
+}
+
+// Filters Categories
+.filters-container {
+    display: flex;
+
+    .item-filter {
+        &:not(:last-child) {
+            margin-right: var(--space-sm);
+        }
+
+        &.active {
+            opacity: 0.64;
+            pointer-events: none;
+        }
+    }
+}
+
+// Progress line
+#progress-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    background: var(--brand_primary);
+    height: 2px;
+    z-index: $page_up_level;
+}
+
+
+// H1
+h1 {
+    position: relative;
+   
+}
+
+// Block Post Content
+.content {
+    h2,
+    h3,
+    h4 {
+        margin-top: var(--space-sm);
+    }
+
+    p {
+        line-height: var(--body-line-height);
+    }
+
+    ul,
+    ol,
+    p {
+        margin-bottom: var(--space-md);
+    }
+
+    ul,
+    ol {
+        list-style-position: outside;
+        padding-left: var(--space-md);
+    }
+
+    ul {
+        list-style-type: disc;
+
+        li {
+            list-style: initial;
+        }
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    ul li,
+    ol li {
+        line-height: var(--body-line-height);
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    u {
+        text-decoration: underline;
+    }
+
+    a {
+        position: relative;
+        color: inherit;
+
+        &:not(.no-link) {
+            &:after {
+                content: "";
+                position: absolute;
+                height: 1px;
+                width: 100%;
+                background: $blue;
+                bottom: 0;
+                left: 0;
+                transform: scaleX(1);
+                transform-origin: left;
+                transition: transform 1.2s $easeSmooth;
+            }
+
+            &:hover {
+                &:after {
+                    transform: scaleX(0);
+                    transform-origin: right;
+                }
+            }
+        }
+    }
+
+    &.c-white {
+        a {
+            &:not(.no-link) {
+                &:after {
+                    background: $white;
+                }
+            }
+        }
+    }
+}
+
+/* utility classes */
+.truncate {
+    // truncate text if it exceeds parent
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

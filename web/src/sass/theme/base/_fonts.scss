@@ -1,0 +1,29 @@
+/*
+-------------------------------- 
+FONTS THEME
+--------------------------------
+*/
+@font-face {
+    font-family: "content";
+    src: url("../fonts/content.eot");
+    src: url('../fonts/content.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/content.woff2') format('woff2'),
+         url('../fonts/content.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "title";
+    src: url('../fonts/title.woff2');
+    /*src: url('../fonts/title.eot');
+    src: url('../fonts/title.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/title.woff2') format('woff2'),
+         url('../fonts/title.woff') format('woff');*/
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+}

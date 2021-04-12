@@ -1,0 +1,32 @@
+{% set footer = menu.footer.get_items %}
+
+{#
+|
+| Footer
+|---------
+#}
+<footer class="footer">
+	<div class="footer-top">
+	    <div class="container ">
+	    	<div class="row item-row">
+		        <div class="col-md-6">
+	            	<ul>
+	        			<li class="c-white">{{ translations.footer_copyright }}</li>	
+
+		         			{% if options.footer_list_cgu %}
+				         		{% for item in options.footer_list_cgu %}
+				         			<li>
+				            			<a href="{{item.lien.url}}" {{item.lien.target ? 'target="_blank"' :'' }} class="c-white mb-0" >{{item.lien.title}}</a>
+				            		</li>
+				            	{% endfor %}
+				            {% endif %}
+
+			            <li class="c-white">
+			            	<button id="ot-sdk-btn" class="ot-sdk-show-settings">{{translations.cookie}}</button>
+			            </li>
+		            </ul>
+		        </div>
+	        </div>
+	    </div>
+    </div>
+</footer>

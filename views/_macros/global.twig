@@ -1,0 +1,227 @@
+{#
+|
+| Lazyload Images
+|-----------------
+#}
+{% macro image(params) %}
+{% set orientation = params.orientation %}
+{% set webp = params.webp %}
+{% set jpg = params.jpg %}
+{% set alt = params.alt %}
+
+    <div class="{{ orientation }} lazy-ctr">
+        <div class="img-placeholder"></div>
+        {% if jpg %}
+            <picture>
+                <source data-srcset="{{ webp }}" type="image/webp" />
+                <source data-srcset="{{ jpg }}" type="image/jpeg" />
+                <img class="img-lazy" src="{{ jpg }}" alt="{{ alt }}" />
+            </picture>
+        {% endif %}
+    </div>
+
+{% endmacro %}
+
+
+
+
+
+{# 
+|
+| Banner
+|---------
+#}
+{% macro home(params, img, translation) %}
+    {% set classes = params.classes  %}
+
+    {% set title   = params.title  %}
+    {% set content = params.text  %}
+    {% set image   = params.image %}
+
+    <section class="banner banner--home {{ classes }}" data-anim-timeline-onload>
+        <div class="item-content">
+            <div class="container">
+                <h1 class="title-xxl item-title mb-sm" data-anim-item="fadeInUp.parallax"  data-start="0.2">{{ title }}</h1>
+                <div class="item-text" data-anim-item="fadeInUp.parallax">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="cms center title-lg fw-500 c-white">
+                                <p class="mb-0">{{ content }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="img-cover">
+            {% if image %}
+                <figure class="banner-background">
+                    <img src="{{TimberImage(image).src}}" alt="{{TimberImage(image).alt}}" class="img-fluid"/>
+                </figure>
+            {% endif %}
+        </div>
+    </section>
+{% endmacro %}
+
+
+{#
+#
+# Video 
+#
+#}
+{% macro video(datas, sectionID ) %}
+
+    {% set type         = datas.type  %}
+    {% set idYoutube    = datas.idYoutube  %}
+    {% set idVimeo      = datas.idVimeo  %}
+    {% set idFile       = datas.idFile  %}
+    {% set controls     = datas.controls|join(' ')  %}
+        {% if type == "Youtube" %}
+            <div id="section-video-{{sectionID}}" data-plyr-provider="youtube" data-plyr-embed-id="{{idYoutube}}" class="ctr-video" data-controls="{{controls}}" ></div>
+        {% elseif type == "Vimeo" %}
+            <div id="section-video-{{sectionID}}" data-plyr-provider="vimeo" data-plyr-embed-id="{{idVimeo}}" class="ctr-video" data-controls="{{controls}}" ></div>
+        {% else %}
+            <video class="ctr-video" id="section-video-{{sectionID}}"  controls playsinline {{datas.controlsSource}} data-controls="{{controls}}">
+                <source src="{{ idFile.url }}" type="video/mp4">
+            </video>
+        {% endif  %}
+
+{% endmacro %}
+
+
+
+{#
+#
+# Reseaux sociaux 
+#
+#}
+{% macro reseaux_sociaux(datas,img, data) %}
+    {% set facebook = datas.facebook %}
+    {% set linkedin  = datas.linkedin %}
+    {% set malt  = datas.malt %}
+    {% set twitter  = datas.twitter %}
+
+    <div class="ul-rs">
+        {% if facebook %}
+            <div class="item-rs" {{data}} >
+                <a href="{{facebook}}" target="_blank">
+                    {{ function([services, 'svg'], img ~ '/icon/facebook.svg') }}
+                </a>
+            </div>
+        {% endif %}
+        {% if twitter %}
+            <div class="item-rs" {{data}} >
+                <a href="{{twitter}}" target="_blank">
+                    {{ function([services, 'svg'], img ~ '/icon/facebook.svg') }}
+                </a>
+            </div>
+        {% endif %}
+        {% if linkedin %}
+            <div class="item-rs" {{data}} >
+                <a href="{{linkedin}}" target="_blank">
+                    {{ function([services, 'svg'], img ~ '/icon/linkedin.svg') }}
+                </a>
+            </div>
+        {% endif %}
+         {% if malt %}
+            <div class="item-rs" {{data}} >
+                <a href="{{malt}}" target="_blank">
+                    {{ function([services, 'svg'], img ~ '/icon/linkedin.svg') }}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+
+
+{% endmacro %}
+
+{#
+|
+| Pagination
+|-------------
+#}
+{% macro pagination(params) %}
+    {% set pagination = params.pagination %}
+    {% set prev = params.prev ? params.prev : 'prev' %}
+    {% set next = params.next ? params.next : 'next' %}
+
+    <ul class="pagination-container ta-c">
+        {#
+        |
+        | Pages
+        |--------
+        #}
+        {% for page in pagination.pages %}
+            <li>
+                {% if page.link %}
+                    <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+                {% else %}
+                    <span class="{{ page.class }}">{{ page.title }}</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+
+        
+    </ul>
+{% endmacro %}
+
+
+
+
+{% macro classique(params, img) %}
+    {% set classes      = params.class  %}
+    {% set title        = params.title  %}
+    {% set content      = params.content %}
+    {% set link         = params.link.groupe %}
+    {% set image        = params.image   %}
+    {% set classesTitle = params.classTitle ?  params.classTitle : 'title-lg'  %}
+    {% set classesImg   = params.classImg   %}
+    {% set classesImgTitle   = params.classImgTitle   %}
+
+    {% import '_macros/button.twig' as button %}
+
+    <section class="section-classique {{classes}}"> 
+        <div class="item-content container">
+            <div class="row item-content-row">
+                <div class="col-lg-6 classique-content-ctr" >
+                    <div class="item-title">
+                        <h2 class="title {{classesTitle}}">{{ title }}</h2>
+                    </div>
+                    <div class="cms">
+                        {{ content }}
+                    </div>
+                    <div class="list-btn">
+                        {{button.default({ 
+                            'type'          :   link['lien-type'],
+                            'text'          :   link['texte'],
+                            'lien-interne'  :   link['lien-interne'],
+                            'lien-externe'  :   link['lien-externe'],
+                            'mail'          :   link['mail'],
+                            'phone'         :   link['phone'],
+                            'color'         :   'black' ,
+                            'class'         :   'btn-icon btn-icon-right'
+                            }, img )
+                        }}
+                    </div>
+                </div>
+                <div class="col-lg-5 hero-image-ctr">
+                    <div class="hero-image {{classesImg}}">
+                        <div class="img-cover">
+                            <figure>
+                                <img src="{{TimberImage(image).src}}" alt="{{TimberImage(image).alt}}" class="img-fluid"/>
+                            </figure>
+                        </div>
+                    </div>
+                    {% if params.legende %}
+                        <div class="hero-image-title {{classesImgTitle}}">
+                            {{TimberImage(image).title}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endmacro %}
+

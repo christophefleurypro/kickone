@@ -1,0 +1,126 @@
+.site-container{
+    min-height: 100vh;
+}/*
+|
+| CMS
+|------
+*/
+.cms{
+    span{
+        display: inline;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        margin-bottom: 30px;
+    }
+
+    h1{
+        @extend .title-lg;
+    }
+    h2 {
+        @extend .title-lg;
+    }
+    h3 {
+        @extend .title-lg;
+    }
+    h4 {
+        @extend .title-md;
+    }
+    h5 {
+        @extend .title-sm;
+    }
+    h6 {
+        @extend .title-xs;
+    }
+
+    img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    strong{
+        font-weight: 800;
+    }
+
+    p{
+        margin-bottom: 20px;
+    }
+
+    &.cms-no-break{
+        p{
+            margin-bottom: 0;
+        }
+    }
+
+    blockquote {
+        position: relative;
+        
+        width: 80%;
+        
+        margin: 50px auto;
+        padding: 10px 0 10px 40px;
+        border-left: 2px solid $green;
+
+        font-size: 30px;
+        line-height: 1.2em;
+        font-weight: 200;
+        font-style: italic;
+
+
+        @include breakpoint(md){
+            margin: auto;
+            margin-bottom: 20px;
+            font-size: 21px;
+        }
+
+     
+    }
+    a{
+        color: $green;
+        &:hover{
+            color: $orange;
+        }
+    }
+}
+
+
+.cms.cms-list{
+    ul{
+        margin-top: 25px;
+        margin-bottom: 25px;
+        li{
+            position: relative;
+            padding-left: 24px;
+            &:before{
+                content:'';
+                position: absolute;
+                display: inline-block;
+                height: 14px;
+                width: 13px;
+                left: 1px;
+                top: 4px;
+                background-image: url('../img/icon/item-puce.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+
+/*
+|
+| Page offset
+|--------------
+*/
+.page-offset {
+    padding-top: $headerHeight;
+    @include breakpoint(lg) {
+        padding-top: $headerHeightSm;
+    }
+}
+
+

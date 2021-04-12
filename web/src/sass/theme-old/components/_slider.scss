@@ -1,0 +1,52 @@
+.swiper-container-ctr{
+	.swiper-button{
+
+		.swiper-button-prev,
+		.swiper-button-next {
+			width: max-content;
+			height: max-content;
+			&:after{
+				display: none;
+			}
+			&:focus{
+				outline: none;
+				box-shadow: none;
+			}
+			.btn-circle{
+				height: 60px;
+				width: 60px;
+			}
+		}
+
+		.swiper-button-prev{
+			.btn-circle{
+				transform: rotate(180deg);
+			}
+		}
+
+		&.swiper-button-right{
+		}
+		&.swiper-button-left{
+
+
+		}
+
+		&.swiper-button-center{
+			position: relative;
+			margin: 30px auto 0 auto;
+			width: max-content;
+			height: max-content;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			> div{
+				position: relative;
+				left: auto;
+				right: auto;
+				top: auto;
+				bottom: auto;
+				margin: auto 20px;
+			}
+		}
+	}
+}

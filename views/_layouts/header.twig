@@ -1,0 +1,40 @@
+{% set menuHeader = menu.headertop.get_items %}
+
+{#
+|
+| Header
+|---------
+#}
+<header id="header" class="{{ headerClass }}">
+    <div class="container">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="{{ function('home_url') }}" rel="home">
+                    {{ function([services, 'svg'], img ~ '/logo.svg') }}
+                </a>
+            </div>
+            <nav id="header-nav">
+                {% include "_includes/menu.twig" with { 'items': menuHeader } %}
+            </nav>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{#
+|
+| Menu Device sm
+|-------------
+#}
+<div id="header-fullscreen">
+    <div class="fullscreen-container">
+        <nav class="fullscreen-nav">
+            {% include "_includes/menu.twig" with { 'items': menuHeader } %}
+        </nav>
+        <div class="header-bg"></div>
+    </div>
+</div>

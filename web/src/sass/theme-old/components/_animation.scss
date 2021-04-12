@@ -1,0 +1,30 @@
+[data-splittext]{
+    opacity: 0;
+
+    &.split-ready {
+        opacity: 1;
+    }
+}
+
+
+
+[data-anim-item="splitline"] {
+    .item-line {
+        overflow: hidden;
+    }
+}
+
+[data-anim-item^="fadeIn"] {
+    opacity: 0;
+}
+
+[data-anim-item^="fadeInLeft.stagger"],
+[data-anim-item^="fadeInUp.stagger"]{
+    opacity: 1;
+
+    [data-stagger-item]{
+        opacity: 0;
+    }
+}
+
+

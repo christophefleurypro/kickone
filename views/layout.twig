@@ -1,0 +1,87 @@
+<!doctype html>
+<html {{ site.language_attributes }}>
+
+    {#
+    |
+    | Head
+    |-------
+    #}
+    <head>
+        {% include '_layouts/_head.twig' %}
+    </head>
+    
+    {#
+    |
+    | Import macros
+    |----------------
+    #}
+    {% import '_macros/global.twig' as global %}
+
+    {#
+    |
+    | Body
+    |-------
+    #}
+    <body class="{{ body_class }}">
+        {#
+        |
+        | Loader
+        |---------
+        #}
+        {% include '_includes/loader.twig' %}
+        
+
+        {#
+        |
+        | Site container
+        |-----------------
+        #}
+        <main class="app" data-theme="light" >
+            {#
+            |
+            | Header
+            |---------
+            #}
+            {% block header %}
+            {% include '_layouts/header.twig' with {'headerClass': 'header'} %}
+            {% endblock %}
+
+            {#
+            |
+            | Content
+            |---------
+            #}
+            {% block content %}{% endblock %}
+
+            {#
+            |
+            | Footer
+            |---------
+            #}
+            {% block footer %}
+            {% include '_layouts/footer.twig' %}
+            {% endblock %}
+
+        </main>
+
+        {% if debug %}
+        {% include '_layouts/_debug.twig' %}
+        {% endif %}
+
+        {#
+        |
+        | Javascripts
+        |--------------
+        #}
+        {% block javascripts %}
+            <script src="{{ dist }}/js/app.js"></script>
+        {% endblock %}
+	     
+        {#
+        |
+        | WP Footer
+        |--------------
+        #}
+        {{ wp_footer }}
+    </body>
+</html>

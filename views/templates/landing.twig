@@ -1,0 +1,181 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    
+<div id="page-home">
+
+    {#
+    |
+    | Section Banner
+    |-----------------
+    #}
+    {{ banner.home({
+        'title':    post.get_field('s1--title'),
+        'text':     post.get_field('s1--text'),
+        'image':    post.get_field('s1--image'),
+        'classes':   ''
+    }, img , translations) }}
+
+
+
+    {#
+    |
+    | FLexible Content
+    |-----------------
+    #}
+    {% for item in post.get_field('sh--content') %}
+
+        {% set case         = item.acf_fc_layout %}
+        {% set IndexG       = loop.index %}
+
+
+        {#
+        |
+        | Section TEAM
+        |--------------------------------------------------------------------
+        #}
+        {% if case == "sectionTeam" %}
+
+            {% include 'layout/section-team.twig' with 
+                {
+                    'IndexG': IndexG, 
+                    'title':  item['groupe']['--title'] , 
+                    'relation': item['groupe']['--relation'] 
+                }  
+             %}
+
+        {#
+        |
+        | Section Citation
+        |--------------------------------------------------------------------
+        #}
+        {% elseif case == "sectionCitation" %}
+            
+            {% include 'layout/section-citation.twig' with 
+                {
+                    'IndexG': IndexG, 
+                    'citation':  item['groupe']['--citation'] , 
+                }  
+             %}
+
+
+        {#
+        |
+        | Section NEWS
+        |--------------------------------------------------------------------
+        #}
+        {% elseif case == "sectionNews" %}
+            
+            {% include 'layout/section-news-full.twig' with 
+                {
+                    'IndexG': IndexG, 
+                    'title':  item['groupe']['--title'], 
+                    'selection': item['groupe']['--selection'], 
+                    'lastPost': item['groupe']['--relation'],
+                }  
+             %}
+
+        {#
+        |
+        | Section Colonne
+        |--------------------------------------------------------------------
+        #}
+        {% elseif case == "sectionColonne" %}
+            
+            {% include 'layout/section-colonne.twig' with 
+                {
+                    'IndexG': IndexG, 
+                    'image':  item['groupe']['--image'], 
+                    'title':  item['groupe']['--title'], 
+                    'text':   item['groupe']['--text'], 
+                    'link':   item['groupe']['--btn'],
+                }  
+             %}
+
+        {#
+        |
+        | Section Deux Colonne
+        |--------------------------------------------------------------------
+        #}
+        {% elseif case == "sectionColonne-2" %}
+                
+            {% include 'layout/section-colonne-deux.twig' with 
+                {
+                    'IndexG': IndexG, 
+                    'list':  item['groupe']['--list'],
+                }  
+             %}
+
+        {#
+        |
+        | Section Deux Colonne
+        |--------------------------------------------------------------------
+        #}
+        {% elseif case == "sectionIsotope" %}
+
+            {% include 'layout/section-isotope.twig' with 
+                {
+                    'IndexG': IndexG, 
+                    'title':  item['groupe']['--title'], 
+                    'text':   item['groupe']['--text'], 
+                    'list':   item['groupe']['--list'],
+                }  
+             %}
+
+        {% else %}
+
+            <section class="section">
+                <div class="container">
+                    <div class="ta-c">
+                        {{case}}
+                    </div>
+                    {{dump(item['groupe'])}}
+                </div>
+            </section>
+        {% endif %}
+
+
+
+    {% endfor %}
+
+
+
+    {#
+    |
+    | Section Contact
+    |------------------
+    #}
+    <section class="section bg-light-grey">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="item-title center">
+                        <h2 class="title title-xl c-green font-extra">{{ post.get_field('s5-titre') }}</h2>
+                    </div>
+                    <div class="cms c-green center mt-lg mb-lg">
+                        <p>{{ post.get_field('s5-texte') }}</p>
+                    </div>
+                    <div class="list-btn center">
+                        {% set link = post.get_field('s5-lien')['groupe'] %}
+                        {{button.default({ 
+                            'type'          :   link['lien-type'],
+                            'text'          :   link['texte'],
+                            'lien-interne'  :   link['lien-interne'],
+                            'lien-externe'  :   link['lien-externe'],
+                            'mail'          :   link['mail'],
+                            'phone'         :   link['phone'],
+                            'color'         :   'full-orange' ,
+                            'class'         :   'btn-full btn-md btn-icon btn-icon-right'
+                            }, img)
+                        }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    </div>
+{% endblock %}

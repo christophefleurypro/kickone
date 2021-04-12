@@ -1,0 +1,242 @@
+/*
+-------------------------------- 
+HEADER LAYOUT
+--------------------------------
+*/
+#header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: var(--space-sm) 0;
+    z-index: 1000;
+    transition: transform 0.2s linear padding 0.2s $easeCustom;
+
+    @include breakpoint(sm) {
+        padding: var(--space-md) 0;
+    }
+
+    &:before {
+        content: "";
+        @include size(100%, 100%);
+        @include absolute();
+        background: $dark-blue;
+        transform: translateY(-100%);
+        transition: transform 0.4s $easeCustom 0.4s;
+    }
+
+    .header-logo {
+        position: relative;
+
+        svg {
+            width: auto;
+            height: 24px;
+
+            path {
+                transition: fill 0.4s ease;
+
+                &:not(#logo_circle) {
+                    fill: $blue;
+                }
+
+                &#logo_circle {
+                    fill: $orange;
+                }
+            }
+        }
+    }
+
+    .header-container {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $blue;
+        transition: color 0.24s ease;
+
+        /*
+        #header-nav {
+            display: none;
+
+            ul {
+                display: flex;
+                align-items: center;
+
+                li {
+                    &:not(:last-child) {
+                        margin-right: var(--space-lg);
+                    }
+
+                    &.border-link {
+                        a {
+                            padding: 16px 32px;
+                            border: 1px solid $white;
+                            transition: border 0.4s ease;
+
+                            &:after {
+                                content: "";
+                                position: absolute;
+                                height: 100%;
+                                width: 100%;
+                                bottom: 0;
+                                left: 0;
+                                z-index: -1;
+                                background: $orange;
+                                transform: scaleX(0);
+                                transform-origin: right;
+                                transition: transform 1.2s $easeSmooth;
+                            }
+
+                            &:hover {
+                                border: 1px solid $orange;
+
+                                &:after {
+                                    transform: scaleX(1);
+                                    transform-origin: left;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @include breakpoint(sm) {
+                display: flex;
+            }
+
+            -------------------------------- 
+            Language Selector
+            --------------------------------
+            .language-selector {
+                margin-left: var(--space-sm);
+
+                .language-item {
+                    text-transform: uppercase;
+
+                    &:first-child {
+                        margin-right: var(--space-xs);
+                    }
+
+                    &.active {
+                        opacity: 0.4;
+                    }
+                }
+            }
+        }
+            */
+    }
+
+    /*
+    -------------------------------- 
+    Burger
+    --------------------------------
+    */
+    .burger {
+        position: relative;
+        cursor: pointer;
+        padding: 12px 0 12px 12px;
+        display: block;
+        div {
+            @include size(32px, 1px);
+            background-color: $white;
+            display: block;
+            position: relative;
+            margin-bottom: 6px;
+            transition: transform 0.64s $easeOutExpo, opacity 0.24s $easeOutExpo, background-color 0.24s ease;
+            &:first-child{
+                margin-top: 6px;
+            }
+        }
+    }
+
+    /*
+    -------------------------------- 
+    Light
+    --------------------------------
+    */
+    &.is-light {
+        .header-logo {
+            svg {
+                path {
+                    &:not(#logo_circle) {
+                        fill: $white;
+                    }
+
+                    &#logo_circle {
+                        fill: $orange;
+                    }
+                }
+            }
+        }
+
+        .header-container {
+            color: $white;
+
+            a {
+                &:after {
+                    background: $white;
+                }
+            }
+        }
+
+        .burger {
+            div {
+                background-color: $white;
+            }
+        }
+    }
+
+    /*
+    -------------------------------- 
+    On scroll
+    --------------------------------
+    */
+    &.is-scrolled {
+        transition: transform 0.4s linear padding 0.2s $easeCustom;
+        padding: var(--space-xs) 0;
+        .header-logo {
+            svg {
+                path {
+                    &:not(#logo_circle) {
+                        fill: $blue;
+                    }
+
+                    &#logo_circle {
+                        fill: $orange;
+                    }
+                }
+            }
+        }
+
+        .header-container {
+            color: $blue;
+        }
+
+        &:before {
+            transform: translateY(0%);
+        }
+    }
+
+    /*
+    -------------------------------- 
+    Is menu 
+    --------------------------------
+
+
+    overflowhidden
+
+    
+    */
+    &.is-menu{
+        transform: translate(0px, 0px) !important;
+        padding: var(--space-xs) 0 !important;
+        z-index: 3000;
+        &:before {
+            transform: translateY(-100%) !important;
+        }
+    }
+}
+
+
+
+

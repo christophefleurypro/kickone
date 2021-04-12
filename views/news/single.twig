@@ -1,0 +1,106 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div id="page-news-single" class="page-offset">
+
+        {#
+        |
+        | Back btn
+        |-----------------
+        #}
+        <div class="back-btn-container pt-xl">
+            <div class="container">
+                <a href="{{blog_page_url}}" class="link-simple link-simple--back link-simple--green">
+                    <span class="icon">{{ function([services, 'svg'], img  ~ '/icon/ico-btn-right.svg' ) }}</span>
+                    <span class="text">{{translations.back_to_actu}}</span>
+                </a>
+            </div>
+        </div>
+    
+        {#
+        |
+        | Post meta
+        |-----------------
+        #}
+        <section class="section section-news pb-lg pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-11 offset-xl-1">
+                        <div class="detail-date-ctr">
+                            <p class="post-date">{{ post.date|date('d.m.Y') }}</p> 
+                            <ul class="cat-date">
+                                {% for cat in post.categories %}
+                                    <li> {{cat.name}}</li>  
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <h1 class="title title-xxl c-green font-extra">{{ post.title }}</h1>
+                    </div>
+                  
+                </div>
+            </div>
+        </section>
+
+
+        {% if post.thumbnail %}
+            <section class="section pb-0 pt-0">
+                    <div class="bg-img-landscape-sm" style="background-image: url('{{ post.thumbnail.src }}')"></div>
+            </section>
+        {% endif %}
+
+        {#
+        |
+        | Post content
+        |-----------------
+        #}
+        <section class="section">
+            <div class="container">
+                <div class="col-xl-11 offset-xl-1">
+                    <div class="cms fs-md">
+                        {{ post.content }}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        {#
+        |
+        | Section Contact
+        |------------------
+        #}
+        <section class="section pt-xxl pb-xxl section-news-bottom bg-green">
+            <div class="container item-content">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="item-title mb-md center">
+                            <h2 class="title title-xl c-white font-extra">{{ post.get_field('s0-texte') }}</h2>
+                        </div>
+                        <div class="list-btn center">
+                            {% set link = post.get_field('s0-link')['groupe'] %}
+                            {{button.default({ 
+                                'type'          :   link['lien-type'],
+                                'text'          :   link['texte'],
+                                'lien-interne'  :   link['lien-interne'],
+                                'lien-externe'  :   link['lien-externe'],
+                                'mail'          :   link['mail'],
+                                'phone'         :   link['phone'],
+                                'color'         :   'full-orange' ,
+                                'class'         :   'btn-full btn-md btn-icon btn-icon-right'
+                                }, img)
+                            }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% set image = post.get_field('s0-image') %}
+            <div class="img-cover bg-overlay ">
+                <figure class="banner-background">
+                    <img src="{{TimberImage(image).src}}" alt="{{TimberImage(image).alt}}" class="img-fluid"/>
+                </figure>
+            </div>
+        </section>
+        
+    </div>
+
+{% endblock %}

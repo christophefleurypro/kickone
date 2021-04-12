@@ -1,0 +1,46 @@
+/*
+-------------------------------- 
+SPACING REQUIRE
+--------------------------------
+*/
+:root {
+    --space-unit: 1em;
+}
+
+:root,
+* {
+    --space-xs: calc(0.5 * var(--space-unit));
+    --space-sm: calc(0.75 * var(--space-unit));
+    --space-md: calc(2 * var(--space-unit));
+    --space-lg: calc(4 * var(--space-unit));
+    --space-xl: calc(6 * var(--space-unit));
+    --component-padding: var(--space-xl);
+}
+
+.space--xxl {
+    font-size: var(--space-xl);
+
+    @include breakpoint(sm) {
+        font-size: var(--space-xxl);
+    }
+}
+
+.space--xl {
+    font-size: var(--space-xl);
+}
+
+.space--lg {
+    font-size: var(--space-lg);
+}
+
+.space--md {
+    font-size: var(--space-md);
+}
+
+.space--sm {
+    font-size: var(--space-sm);
+}
+
+.space--xs {
+    font-size: var(--space-xs);
+}

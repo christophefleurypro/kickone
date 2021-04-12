@@ -1,0 +1,76 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div id="page-home" class="page home-page">
+	    
+
+		<section class="banner banner_home">
+			<div class="container">
+	            <div class="grid jc-center">
+	            	<div class="col-md-8">
+						<h1 class="title title-md title__lines --center">
+							<span>Hey,</span>
+							<span>I'm Christophe</span> 
+							<span>Developpeur</span> 
+							<span>Front-end</span>
+							<span>based at Lyon</span>
+						</h1>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container">
+	            <div class="grid">
+
+	            	{% for item in post.get_field('--relation') %}
+		                <a href="{{item.link}}" class="col-md-6 item__projet">
+		                    <div class="item__image">
+		                		{{ global.image({
+		                            'orientation': ( loop.index % 3 == 1) ? 'img-portrait' : 'img-landscape',
+		                            'webp': Image(item.get_field('projet--Image')).src|towebp,
+		                            'jpg': Image(item.get_field('projet--Image')).src|tojpg,
+		                            'alt': post.title
+	                            }) }}
+	                            <div class="item__meta">2021</div>
+		                    </div>
+		                    <h3 class="item__title">{{item.title}}</h3>
+		                    <p class="item__p">{{item.get_field('projet--description')}}</p>
+		                </a>
+	                {% endfor %}
+
+
+	                <div class="col-md-6 item__projet --all__projet">
+		                <a href="#">Découvrir toutes mes réalisations</a>
+	                </div>
+
+	            </div>
+	        </div>
+	    </section>	
+
+
+	    <section class="section vh-100">
+
+        	{% for item in post.get_field('--cadre') %}
+		    	<div class="container">
+		    		<div class="grid">
+		    			<div class="col">
+		    				<h3>{{item['--titre']}}</h3>
+		    			</div>
+		    		</div>
+		    	</div>
+            {% endfor %}
+
+	    </section>
+
+
+
+		<section id="app-canvas"></section>
+
+	</div>
+
+
+{% endblock %}
+
+

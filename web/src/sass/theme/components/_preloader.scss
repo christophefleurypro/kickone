@@ -1,0 +1,28 @@
+/*
+-------------------------------- 
+PRELOADER COMPONENT
+--------------------------------
+*/
+#preloader {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: var(--primary_grey);
+    top: 0;
+    left: 0;
+    z-index: $loader_level;
+
+    .preloader-full {
+        display: none;
+        height: 100%;
+        width: 100%;
+        background: var(--primary_grey);
+        top: 0;
+        left: 0;
+        cursor: wait;
+
+        &.active {
+            display: block;
+        }
+    }
+}

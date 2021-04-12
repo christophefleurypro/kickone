@@ -1,0 +1,34 @@
+#------------------------------------------------------
+#                     ACF Extend OPTIONS
+#------------------------------------------------------
+#
+# This file allows to manage ACF Extend
+#
+#
+
+#--------------------- Class ----------------------
+class:
+  - filterImage
+  - SimpleBtn
+  - SimpleWysiwyg
+
+
+#--------------------- options ----------------------
+options:
+  - generales
+  - header
+  - footer
+  - reseaux-sociaux
+  - analytics
+
+#--------------------- sections ----------------------
+#sections: 
+
+ 
+#---------------------  CPT    ----------------------
+#cpt:
+
+
+#---------------------  Template    ----------------------
+#templates:
+

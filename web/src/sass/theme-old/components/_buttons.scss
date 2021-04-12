@@ -1,0 +1,199 @@
+/*
+|--------------------
+|      BUTTONS
+|--------------------
+*/
+.list-btn{
+	.item-btn{
+		display: inline-block;
+		&:not(:last-child){
+			margin-right: 30px;
+		}
+	}
+	&.vertical{
+		display: flex;
+		flex-direction: column;
+	    align-items: flex-start;
+	}
+	&.center{
+		display: flex;
+   	 	justify-content: center;
+	}
+}
+
+/*
+|--------------------
+|      BUTTONS
+|--------------------
+*/
+@keyframes toRightFromLeft {
+	49% {
+		background-position: 30px -10px;
+
+	}
+	50% {
+		opacity: 0;
+		background-position: -30px 30px;
+
+	}
+	51% {
+		opacity: 1;
+	}
+}
+
+@keyframes toRightFromLeftBig {
+	49% {
+		background-position: 68px -30px;
+
+	}
+	50% {
+		opacity: 0;
+		background-position: -22px 68px;
+
+	}
+	51% {
+		opacity: 1;
+	}
+}
+
+
+
+.circle-svg{
+	.before{}
+	.behind{}
+}
+.btn-icon{
+	.icon{
+	    height: 32px;
+	    top: 0;
+	    bottom: 0;
+	    margin: auto;
+	    svg{
+			transform: rotateY(180deg);
+	    }
+	    &:after{
+	    	content: '';
+	    	position: absolute;
+	    	left: 0;
+	    	right: 0;
+	    	top: 0;
+	    	bottom: 0;
+	    	margin: auto;
+	    	overflow: hidden;
+	    	border-radius: 100%;
+	    	background-image: url('../img/icon/btn-target.svg');
+			background-position: 10px 11px;
+			background-size: 11px;
+			background-repeat: no-repeat;
+			transition: 0.4s $easeInSine 0.2s;
+			
+	    }
+		.another-circle {
+		  	stroke-dasharray: 227;
+		  	stroke-dashoffset: 227;
+		  	transition: stroke-dashoffset 0.5s $easeOutCubic;
+		}
+	}
+	
+	&:hover{
+		.icon{
+		    &:after{
+				animation : toRightFromLeft 0.4s forwards;
+			}
+		}
+		.another-circle {
+		  	stroke-dashoffset: 0;
+		}
+	}
+	&.btn-black{
+		.icon{
+			svg{
+				.main-circle{  stroke: rgba($blue,0.4); }
+				.another-circle{  stroke: $blue; }
+			}
+		}
+		&:hover{
+			color: $blue;
+		}
+	}
+	&.btn-white{
+		.icon{
+			svg{
+				.main-circle{  stroke: rgba($white,0.4); }
+				.another-circle{  stroke: $white; }
+			}
+		}
+		&:hover{
+			color: $orange;
+		}
+	}
+}
+.btn-icon.btn-download{
+	.icon{
+		height: 40px;
+	    width: 40px;
+	    &:after{
+	    	background-size: 18px;
+	    	background-position: center;
+	    	background-image: url('../img/icon/btn-download.svg');
+	    }
+	    svg{
+			.main-circle{  stroke: $white; fill: $white }
+			.another-circle{  stroke: $white; fill: $white; }
+		}
+	}
+
+	&.btn-download-blue{
+		.icon{
+			svg{
+				.main-circle{  stroke: rgba($blue,0.4); fill: $white }
+				.another-circle{  stroke: rgba($blue,1); fill: $white; }
+			}
+		}
+	}
+}
+
+.btn-icon.btn-video{
+	padding-right: 72px;
+	&:hover{
+		.icon{
+			&:after{
+				animation : toRightFromLeftBig 0.4s forwards;
+			}
+		}
+	}
+	.icon{
+	    height: 60px;
+	    width: 60px;
+	    &:after{
+	    	background-position: 18px 20px;
+	    	background-size: 20px;
+	    }
+	    svg{
+			.main-circle{  stroke: $white; fill: $white }
+			.another-circle{  stroke: $white; fill: $white; }
+		}
+	}
+	&.btn-col{
+		display: flex;
+	    flex-direction: column-reverse;
+	    justify-content: center;
+	    padding: 0;
+		.icon{
+			position: relative;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+
+.btn-simple{
+	font-weight: 400;
+	padding-top: 0px; 
+	padding-bottom: 0px;
+	border-bottom: 1px solid $white;
+	&:hover{
+		font-weight: 500;
+	}
+}
+

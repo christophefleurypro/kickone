@@ -1,0 +1,111 @@
+/*
+---------------------- 
+        EDITO
+----------------------
+*/
+#template-edito{
+    /*
+    |
+    | Section flexible
+    |-------------------
+    */
+    .section__flexible{
+        position: relative;
+        
+        /*
+        |
+        | Spaces
+        |---------
+        */
+        $section-spaces: (
+            'small' : ('default': 60px, 'sm': 60px),//set
+            'medium': ('default': 70px, 'sm': 100px),//set
+            'large' : ('default': 70px, 'sm': 120px),//set
+        );
+
+        @each $key, $value in $section-spaces{
+            .space__top-#{$key}{
+                padding-top: map-get($value, 'default');
+
+                @include breakpoint(sm){
+                    padding-top: map-get($value, 'sm');
+                }
+            }
+
+            .space__bottom-#{$key} {
+                padding-bottom: map-get($value, 'default');
+
+                @include breakpoint(sm) {
+                    padding-bottom: map-get($value, 'sm');
+                }
+            }
+        }
+        
+
+        /*
+        |
+        | Layout text
+        |--------------
+        */
+        &.layout__text{
+            .cms{
+                strong{
+                    color: $blue;
+                }
+            }
+        }
+
+        /*
+        |
+        | Layout key_figures
+        |---------------------
+        */
+        &.layout__key_figures{
+            .key__figures__col__left{
+                .key__figures__col__left-title, .key__figures__col__left-content{
+                    @include customSpaceFlexible(padding-left);
+                    @include customSpaceFlexible(padding-right);
+
+                    @include breakpoint(lg) {
+                        padding-right: 0;
+                    }
+                }
+            }
+
+            .key__figures__col__right{
+                @include customSpaceFlexible(padding-left);
+                @include customSpaceFlexible(padding-right);
+
+                @include breakpoint(lg){
+                    padding-left: 0;
+                }
+            }
+        }
+
+
+        /*
+        |
+        | Layout blocs_text_image
+        |--------------------------
+        */
+        &.layout__text_image_link {
+            .col__image{
+                position: relative;
+                z-index: 1;
+            }
+            .line__container{
+                position: relative;
+
+                .line{
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    @include customWidth();
+                }
+            }
+        }
+    }
+
+
+    
+}

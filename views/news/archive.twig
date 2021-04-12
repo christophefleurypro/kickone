@@ -1,0 +1,80 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <div id="page-news-archive">
+
+        {#
+        |
+        | Section Banner
+        |-----------------
+        #}
+        {{ banner.default({
+            'title': post.get_field('s-banner')['--title'],
+            'text':  post.get_field('s-banner')['--text'],
+            'image': post.get_field('s-banner')['--image']
+        }) }}
+
+
+        {#
+        |
+        | Section List fond
+        |------------------
+        #}
+
+        <section class="section pt-lg section-posts bg-light-grey">
+
+            <div class="container mb-lg">
+                <div class="ta-r">
+                    <form action="{{blog_page_url}}" id="form-cat">
+                        <label for="filter-cat" class="c-green">{{translations.filterby}}</label>
+                        <select id="filter-cat" name="filter">
+                            <option value="all">{{translations.categorie}}</option>
+                            {% for item in category %}
+                                <option value="{{item.term_id}}" {{current_cat == item.term_id ? 'selected' : '' }}>{{item.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </div>
+            </div>
+
+            <div class="container item-content">
+                <div class="row">
+
+                    {% for item in posts %}
+                       <div class="item-news-ctr col-md-4">
+                            <a href="{{item.link}}" class="item-news item-news--preview">
+                                <div class="item-news-content">
+                                    <div class="item-date c-grey">{{item|date('d F Y')}}</div>
+                                    <div class="item-title">
+                                        <p class="fs-md c-green fw-500 mb-0">{{item.title}}</p>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="cms c-green">
+                                            <p class="fs-sm mb-0">{{item.content|excerpt(30)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-link ta-r">
+                                    <div class="link-simple link-simple--green">
+                                        <span class="text">{{translations.lirearticle}}</span>
+                                        <span class="icon">{{ function([services, 'svg'], img ~ '/icon/ico-btn-right.svg') }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    {{ global.pagination({ 'pagination': posts.pagination, 'prev': 'Précédent', 'next': 'Suivant' }) }}
+                </div>
+            </div>
+
+
+
+        </section>
+
+
+    </div>
+{% endblock %}

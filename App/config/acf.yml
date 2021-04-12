@@ -1,0 +1,27 @@
+#------------------------------------------------------
+#                     ACF OPTIONS
+#------------------------------------------------------
+#
+# This file allows to manage ACF options pages
+#
+#
+
+#---------------- Google Api Key ----------------
+#google_map_api_key: AIzaSyDGF98psyVSiyiV
+
+
+#------------------- Options --------------------
+options:
+  general_options:
+    page: 
+      page_title: Options générales
+      menu_title: Options du site
+      menu_slug: general_options
+      capability: edit_posts
+    sub_menus:
+      - { page_title: Options Générales, menu_title: Générales }
+      - { page_title: Header, menu_title: Header }
+      - { page_title: Footer, menu_title: Footer }
+      - { page_title: Reseaux sociaux, menu_title: Reseaux-sociaux }
+      - { page_title: Cookie, menu_title: Cookie }
+      - { page_title: Analytics, menu_title: Analytics }

@@ -1,0 +1,387 @@
+/*
+-------------------------------- 
+PARTIAL LAYOUT
+--------------------------------
+*/
+.current-menu-item {
+    pointer-events: none;
+
+    a {
+        opacity: 0.64;
+    }
+}
+
+.page-wrapper {
+	padding-top: 100px;
+	min-height: calc(100vh - ( 100px + var(--space-md) * 2 ));
+}
+
+
+/*
+|
+| Line
+|------
+*/
+.line{
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: $orange;
+}
+
+/*
+|
+| Custom Accordion
+|-------------------
+*/
+.ui-accordion {
+    .item-a {
+        &:first-child {
+            .item-a-heading {
+                padding-top: 0;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+
+        .item-a-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid $orange;
+            cursor: pointer;
+
+            .item-a-toggle {
+                position: relative;
+                margin-left: 20px;
+
+
+                .item-dropdown {
+                    @extend .svg-parent;
+                    display: block;
+                    width: 26px;
+                    transition: transform 1.2s $easeSmooth;
+                }
+            }
+        }
+
+        .item-a-content {
+            display: none;
+            overflow: hidden;
+
+            .item-a-inner {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+        }
+
+        .bullet {
+            &::before {
+                opacity: 0;
+                transition: transform 0.4s ease, opacity 0.4s ease;
+            }
+        }
+
+        &.active {
+            .item-a-content {
+                display: block;
+            }
+        }
+
+        &.a-active {
+            .item-dropdown {
+                transform: rotate(180deg);
+            }
+
+            .bullet::before {
+                opacity: 1;
+                transform: translateX(0%) translateY(-50%);
+            }
+        }
+    }
+}
+
+
+/*     
+|
+| list
+|-------
+*/
+.list {
+    li {
+        position: relative;
+        padding-left: 25px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 7px;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: $orange;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 5px;
+        }
+    }
+
+    &.--lg {
+        li {
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+
+/*
+|
+| CMS
+|------
+*/
+.cms{
+    span{
+        display: inline;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        margin-bottom: 30px;
+    }
+
+    h1{
+        @extend .title-lg;
+    }
+    h2 {
+        @extend .title-lg;
+    }
+    h3 {
+        @extend .title-lg;
+    }
+    h4 {
+        @extend .title-sm;
+    }
+    h5 {
+        @extend .title-sm;
+    }
+    h6 {
+        @extend .title-xs;
+    }
+
+    img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    strong{
+        font-weight: 800;
+    }
+
+    p{
+        margin-bottom: 20px;
+    }
+
+    &.cms-no-break{
+        p{
+            margin-bottom: 0;
+        }
+    }
+
+    ul{
+        @extend .list;
+    }
+    
+    &.cms-list-lg{
+        ul {
+            @extend .--lg;
+        }
+    }
+}
+
+
+
+
+
+/*
+|
+| Quote
+|---------------
+*/
+.quote{
+    position: relative;
+    padding: 30px 0;
+    text-align: center;
+
+    .quote__icon{
+        //position: absolute;
+        display: inline-block;
+        z-index: 1;
+        @extend .svg-parent;
+        width: 75px;
+
+        svg{
+            path{
+                fill: $orange;
+            }
+        }
+
+        &.--left{
+            //top: 90px;
+            transform: translateY(-30px);
+            //left: 140px;
+        }
+
+        &.--right {
+            //top: 100%;
+            transform: translateY(30px);
+            //right: 0;
+        }
+    }
+
+    .quote__text{
+        @extend .p-r-z-1;
+    }
+}
+
+
+
+/*
+|
+| UI Table
+|-----------
+*/
+.ui-table{
+    width: 100%;
+    border-collapse: collapse;
+
+    .item-t-fake-label{
+        display: none;
+        color: $orange;
+    }
+
+    @for $i from 1 to 10 {
+        &.t-#{$i}-cols{
+            thead{
+                th{
+                    width: calc(100% / #{$i});
+                }
+            }
+
+            $breakpoint: xs;
+
+            @if $i > 1{
+                $breakpoint: sm;
+            }
+
+            @if $i > 3 {
+                $breakpoint: lg;
+            }
+            
+            // @include media-breakpoint-down($breakpoint) {
+            //     display: block;
+
+            //     thead{
+            //         display: none;
+            //     }
+
+            //     tbody{
+            //         display: block;
+
+            //         td{
+            //             border: none;
+            //             padding: 0;
+            //         }
+
+            //         tr, td{
+            //             display: block;
+            //         }
+
+            //         tr{
+            //             padding: 10px 15px;
+            //             border: 1px solid $border-color;
+            //             margin-bottom: 15px;
+            //         }
+            //     }
+                
+            //     .item-t-fake-label{
+            //         display: inline;
+            //     }
+            // }
+        }
+    }
+
+    th, td{
+        border-bottom: 1px solid $orange;
+    }
+
+    thead{
+        th{
+            padding-bottom: 15px;
+            color: $blue;
+            font-weight: 400;
+            text-transform: uppercase;
+            text-align: left;
+        }
+    }
+
+    td{
+        padding: 20px 0;
+    }
+}
+
+/*
+|
+| Figure
+|-----------
+*/
+.grid__figures {
+    border-top: 1px solid $grey;
+    border-left: 1px solid $grey;
+    border-right: 1px solid $grey;
+
+    .figure {
+        @extend .flex-center;
+        position: relative;
+        min-height: 100%;
+        padding: 80px 50px;
+        border-bottom: 1px solid $grey;
+        text-align: center;
+    }
+
+    @include breakpoint(sm) {
+        border: none;   
+        
+        & > .grid{
+            &:nth-child(odd) {
+                padding-right: 50px;
+            }
+
+            &:nth-child(even) {
+                margin-top: -1px;
+                padding-left: 100px;
+            }
+        }
+
+        &>.grid {
+            .grid__figures__col {
+                &:nth-child(2) {
+                    .figure {
+                        border-left: 0;
+                    }
+                }
+            }
+        }
+
+        .figure {
+            border: 1px solid $grey;
+            text-align: left;
+        }
+    }
+}
